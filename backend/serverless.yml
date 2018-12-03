@@ -23,9 +23,9 @@ functions:
 resources:
   Resources:
     UsersTable:
-      TableName: ${self:provider.environment.PROJECT}-users
       Type: 'AWS::DynamoDB::Table'
       Properties:
+        TableName: ${self:provider.environment.PROJECT}-users
         AttributeDefinitions:
           - AttributeName: id
             AttributeType: S
