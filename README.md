@@ -6,6 +6,8 @@ It's a demonstration of modern technology, including: Serverless, NodeJs, GraphQ
 
 ## Backend
 
-A "Serverless" function.
+A "Serverless" function backend.
 
 ## Frontend
+
+A "React" frontend client.
