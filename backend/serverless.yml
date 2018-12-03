@@ -55,6 +55,10 @@ provider:
 functions:
   query:
     handler: handler.query
+    events:
+      - http:
+          path: query
+          method: get
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
