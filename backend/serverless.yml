@@ -5,13 +5,13 @@ provider:
   stage: dev
   region: eu-west-1
   environment:
-    DYNAMODB_TABLE: ${self:service}-${self:provider.stage}
+    PROJECT: ${self:service}-${self:provider.stage}
   iamRoleStatements:
     - Effect: Allow
       Action:
         - dynamodb:GetItem
         - dynamodb:UpdateItem
-      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
+      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.PROJECT}-users"
 functions:
   query:
     handler: handler.query
@@ -36,7 +36,7 @@ resources:
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
-        TableName: ${self:provider.environment.DYNAMODB_TABLE}
+        TableName: ${self:provider.environment.PROJECT}-users
      GlobalSecondaryIndexes: 
         - IndexName: "email-index"
           KeySchema: 
