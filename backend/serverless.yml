@@ -23,6 +23,7 @@ functions:
 resources:
   Resources:
     UsersTable:
+      TableName: ${self:provider.environment.PROJECT}-users
       Type: 'AWS::DynamoDB::Table'
       Properties:
         AttributeDefinitions:
@@ -36,9 +37,8 @@ resources:
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
-        TableName: ${self:provider.environment.PROJECT}-users
-     GlobalSecondaryIndexes: 
-        - IndexName: "email-index"
-          KeySchema: 
-          - AttributeName: "email"
-            KeyType: "HASH"
+        GlobalSecondaryIndexes: 
+            - IndexName: "email-index"
+              KeySchema: 
+              - AttributeName: "email"
+                KeyType: "HASH"
