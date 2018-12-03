@@ -4,7 +4,7 @@ const {
   GraphQLObjectType,
   GraphQLString,
   GraphQLNonNull
-} = import("graphql");
+} = require('graphql')
 
 // This method just inserts the user's first name into the greeting message.
 const getGreeting = firstName => `Hello, ${firstName}.`;
