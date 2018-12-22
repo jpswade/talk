@@ -1,2 +1,2 @@
-curl -G 'https://ir7cp7rfqa.execute-api.eu-west-1.amazonaws.com/dev/query' \
---data-urlencode 'query={greeting(firstName: "James")}'
+baseUrl=http://localhost:3000
+curl -G "$baseUrl/query" --data-urlencode 'query={signIn(firstName: "Jeremy")}'
