@@ -16,9 +16,7 @@ functions:
   query:
     handler: handler.query
     events:
-      - http:
-          path: query
-          method: get
+      - http: post query
 
 resources:
   Resources:
