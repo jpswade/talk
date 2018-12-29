@@ -6,6 +6,8 @@ provider:
   region: eu-west-1
   environment:
     PROJECT: ${self:service}-${self:provider.stage}
+    AUTH_TOKEN_SECRET: 54ac75a91974d8f710dfcf0097ee9e4b
+    SERVERLESS_REGION: ${self:provider.region}
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -46,4 +48,12 @@ resources:
                 ReadCapacityUnits: 1
                 WriteCapacityUnits: 1
 plugins:
+  - serverless-dynamodb-local
   - serverless-offline
+
+custom:
+  dynamodb:
+    start:
+      port: 8000
+      inMemory: true
+      migrate: true
