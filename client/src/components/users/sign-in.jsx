@@ -28,7 +28,7 @@ class SignIn extends Component {
         <div className="four columns offset-by-four">
           <form onSubmit={this.handleSignIn.bind(this)}>
             <h1>Sign in</h1>
-            <input type="email" placeholder="E-Mail" className="u-full-width" ref="email" />
+            <input type="email" placeholder="Email" className="u-full-width" ref="email" />
             <input type="password" placeholder="Password" className="u-full-width" ref="password" />
             <input type="submit" className="button button-primary u-full-width" value="Sign in" />
           </form>
