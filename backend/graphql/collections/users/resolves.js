@@ -8,9 +8,9 @@ const authenticate = require('../../../auth').authenticate;
 const decode = require('../../../auth').decode;
 const gravatar = require('gravatar');
 
-const stage = process.env.SERVERLESS_STAGE;
-const projectName = process.env.SERVERLESS_PROJECT;
-const usersTable = projectName + '-users-' + stage;
+const tableName = 'users';
+const projectName = process.env.PROJECT;
+const usersTable = projectName + '-' + tableName;
 
 module.exports = {
   signUp(user) {

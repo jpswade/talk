@@ -4,9 +4,9 @@ const db = require('../../../dynamodb');
 const uuid = require('uuid');
 const decode = require('../../../auth').decode;
 
-const stage = process.env.SERVERLESS_STAGE;
-const projectName = process.env.SERVERLESS_PROJECT;
-const postsTable = projectName + '-posts-' + stage;
+const tableName = 'posts';
+const projectName = process.env.PROJECT;
+const usersTable = projectName + '-' + tableName;
 
 module.exports = {
   create(post) {
