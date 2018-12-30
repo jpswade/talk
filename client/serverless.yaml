@@ -1,0 +1,12 @@
+service: webdevtalk
+provider:
+  name: aws
+  stage: dev
+  region: eu-west-1
+
+plugins:
+  - serverless-finch
+
+custom:
+  client:
+    bucketName: "${self:service}.${self:stage}.${self:region}"
