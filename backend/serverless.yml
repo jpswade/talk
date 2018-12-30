@@ -15,11 +15,13 @@ provider:
         - dynamodb:UpdateItem
       Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.PROJECT}-users"
 functions:
-  query:
-    handler: handler.query
+  graphql:
+    handler: handler.graphql
     events:
-      - http: post query
-
+      - http:
+          path: graphql
+          method: post
+          cors: true
 resources:
   Resources:
     UsersTable:

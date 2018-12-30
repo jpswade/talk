@@ -2,8 +2,10 @@
 
 const graphql = require ('./graphql');
 
-module.exports.query = (event, context, callback) => {
-  graphql(event.query)
-    .then((response) => callback(null, response))
-    .catch((error) => callback(error));
+module.exports.graphql = (event, context, callback) => {
+  graphql(event.body)
+  .then(
+      response => callback(null, { statusCode: 200, body: JSON.stringify(response) }),
+      error => callback(error)
+    );
 };

@@ -30,7 +30,10 @@ export function signUp(user) {
 
   return (dispatch) => fetch(`${QUERY_URL}`, {
     method: 'POST',
-    body: JSON.stringify(query)
+    body: JSON.stringify(query),
+    headers:{
+      'Content-Type': 'application/json'
+    }
   })
   .then(response => response.json())
   .then(json => dispatch({
