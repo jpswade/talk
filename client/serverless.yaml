@@ -10,3 +10,4 @@ plugins:
 custom:
   client:
     bucketName: "${self:service}.${self:stage}.${self:region}"
+    distributionFolder: build/
