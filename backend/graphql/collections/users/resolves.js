@@ -35,7 +35,7 @@ module.exports = {
 
     return db('query', {
       TableName: usersTable,
-      IndexName: 'emailIndex',
+      IndexName: 'email-index',
       KeyConditionExpression: 'email = :email',
       ProjectionExpression: 'id, username, email, password, createdAt, updatedAt',
       ExpressionAttributeValues: {
