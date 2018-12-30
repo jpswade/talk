@@ -6,7 +6,7 @@ const decode = require('../../../auth').decode;
 
 const tableName = 'comments';
 const projectName = process.env.PROJECT;
-const usersTable = projectName + '-' + tableName;
+const commentsTable = projectName + '-' + tableName;
 
 module.exports = {
   create(comment) {
