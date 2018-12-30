@@ -1,4 +1,4 @@
-service: webdevtalk # NOTE: update this with your service name
+service: webdevtalk-backend
 provider:
   name: aws
   runtime: nodejs8.10
