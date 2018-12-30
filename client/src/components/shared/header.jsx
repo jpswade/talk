@@ -53,7 +53,7 @@ class Header extends Component {
           <div className="row">
             <div className="twelve columns">
               <Link to="/" style={brandStyles}>
-                Talk
+                WebDevTalk
               </Link>
               <ul style={ulStyles}>
                 {currentUser ? (
