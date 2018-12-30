@@ -40,9 +40,34 @@ resources:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
         GlobalSecondaryIndexes: 
-            - IndexName: "email-index"
+            - IndexName: "emailIndex"
               KeySchema: 
               - AttributeName: "email"
+                KeyType: "HASH"
+              Projection: 
+                ProjectionType: "ALL"
+              ProvisionedThroughput:
+                ReadCapacityUnits: 1
+                WriteCapacityUnits: 1
+    postsTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        TableName: ${self:provider.environment.PROJECT}-posts
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+          - AttributeName: userId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        GlobalSecondaryIndexes: 
+            - IndexName: "userIdIndex"
+              KeySchema: 
+              - AttributeName: "userId"
                 KeyType: "HASH"
               Projection: 
                 ProjectionType: "ALL"
