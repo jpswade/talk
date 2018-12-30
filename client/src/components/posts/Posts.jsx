@@ -63,7 +63,7 @@ export default class Posts extends Component {
   render() {
     const { posts } = this.props;
 
-    const sortedPosts = posts.length
+    const sortedPosts = !!posts
       ? _.orderBy(posts, "createdAt", ["desc"])
       : [];
 
