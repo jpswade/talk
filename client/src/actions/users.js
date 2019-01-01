@@ -30,10 +30,7 @@ export function signUp(user) {
 
   return (dispatch) => fetch(`${QUERY_URL}`, {
     method: 'POST',
-    body: JSON.stringify(query),
-    headers:{
-      'Content-Type': 'application/json'
-    }
+    body: JSON.stringify(query)
   })
   .then(response => response.json())
   .then(json => dispatch({
@@ -75,6 +72,7 @@ export function signIn(user) {
     .then(json => _.isEmpty(json.errors) ? json : Promise.reject(json.errors[0]))
     .then(payload => {
       dispatch({ payload, type: SIGN_IN });
+      console.log(window.previousLocation)
       dispatch(push(window.previousLocation && window.previousLocation.pathname !== '/sign-up' ? window.previousLocation : '/'));
     })
     .catch(exception => dispatch({
