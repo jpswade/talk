@@ -7,3 +7,4 @@ jspm_packages
 
 .history
 backend/.dynamodb
+backend/env.yml

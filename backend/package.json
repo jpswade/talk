@@ -15,11 +15,11 @@
     "bluebird": "^3.5.3",
     "graphql": "^14.0.2",
     "gravatar": "^1.8.0",
-    "serverless": "^1.35.1",
+    "serverless-dynamodb-local": "^0.2.30",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
-    "serverless-dynamodb-local": "^0.2.35",
+    "serverless": "^1.35.1",
     "serverless-offline": "^3.31.3"
   }
 }

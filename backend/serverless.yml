@@ -1,4 +1,4 @@
-service: webdevtalk-backend
+service: webdevtalk
 provider:
   name: aws
   runtime: nodejs8.10
@@ -6,14 +6,15 @@ provider:
   region: eu-west-1
   environment:
     PROJECT: ${self:service}-${self:provider.stage}
-    AUTH_TOKEN_SECRET: 54ac75a91974d8f710dfcf0097ee9e4b
-    SERVERLESS_REGION: ${self:provider.region}
+    APP_SECRET: ${file(./env.yml):APP_SECRET}
+    DYNAMODB_LOCAL_PORT: ${self:custom.dynamodb.start.port}
   iamRoleStatements:
     - Effect: Allow
       Action:
         - dynamodb:GetItem
+        - dynamodb:PutItem
         - dynamodb:UpdateItem
-      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.PROJECT}-users"
+      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.PROJECT}-*"
 functions:
   graphql:
     handler: handler.graphql
@@ -77,9 +78,10 @@ resources:
 plugins:
   - serverless-dynamodb-local
   - serverless-offline
-
 custom:
   dynamodb:
+    stages:
+      - dev
     start:
       port: 8000
       inMemory: true
