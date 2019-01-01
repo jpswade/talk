@@ -46,7 +46,7 @@ module.exports = {
       if (!Item) return Promise.reject('User not found');
 
       let match = bcryptjs.compareSync(password, Item.password);
-      if (!match) return Promise.reject('invalid password');
+      if (!match) return Promise.reject('Invalid credentials');
 
       delete Item.password;
 
