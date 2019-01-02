@@ -25,7 +25,7 @@ class SignUp extends Component {
       };
 
       this.props.signUp(user)
-      .then(() => history.push('/sign-in'));
+      .then(history.push('/sign-in'));
     }
   }
 
