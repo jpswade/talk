@@ -9,11 +9,11 @@ import history from "../../history";
 
 class PostDetailContainer extends Component {
   componentWillMount() {
-    this.props.getPost(this.props.params.id);
+    this.props.getPost(this.props.match.id);
   }
 
   handleUpdatePost(post) {
-    const id = this.props.params.id;
+    const id = this.props.match.id;
     const title = post.title;
     const body = post.body.replace(/(?:\r\n|\r|\n)/g, '<br />');
 
