@@ -1,9 +1,10 @@
 import React from 'react';
 import { Route } from 'react-router';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { Router } from 'react-router-dom';
 
 import store from './store';
+import history from "./history";
 
 import App from './components/app';
 import PostsIndex from './containers/posts/PostsContainer';
@@ -14,7 +15,7 @@ import SignIn from './components/users/sign-in';
 
 export default (
   <Provider store={store}>
-    <Router>
+    <Router history={history}>
       <App>
         <Route exact path="/" component={PostsIndex}/>
         <Route path="/index" component={PostsIndex}/>

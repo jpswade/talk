@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { signUp } from '../../actions/users';
 import { Link } from 'react-router-dom';
+import history from "../../history";
 
 class SignUp extends Component {
   handleSignUp(event) {
@@ -23,7 +24,8 @@ class SignUp extends Component {
         password
       };
 
-      this.props.signUp(user);
+      this.props.signUp(user)
+      .then(() => history.push('/sign-in'));
     }
   }
 

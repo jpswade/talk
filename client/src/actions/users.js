@@ -1,6 +1,5 @@
 import 'whatwg-fetch';
 import _ from 'lodash';
-import { push } from 'react-router-redux';
 
 import { QUERY_URL } from './index';
 import { resetError } from './error';
@@ -37,7 +36,6 @@ export function signUp(user) {
     type: SIGN_UP,
     payload: json
   }))
-  .then(() => dispatch(push('/sign-in')))
   .catch(exception => dispatch({
     type: ERROR,
     payload: exception.message
@@ -72,7 +70,7 @@ export function signIn(user) {
     .then(json => _.isEmpty(json.errors) ? json : Promise.reject(json.errors[0]))
     .then(payload => {
       dispatch({ payload, type: SIGN_IN });
-      dispatch(push(window.previousLocation && window.previousLocation.pathname !== '/sign-up' ? window.previousLocation : '/'));
+      dispatch(this.props.history.push(window.previousLocation && window.previousLocation.pathname !== '/sign-up' ? window.previousLocation : '/'));
     })
     .catch(exception => dispatch({
       type: ERROR,
