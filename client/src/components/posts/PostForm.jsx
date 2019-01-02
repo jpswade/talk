@@ -49,7 +49,7 @@ export default class PostForm extends Component {
         <div className="eight columns offset-by-two">
           <form onSubmit={this.onSubmit.bind(this)}>
             <h1>New post</h1>
-            <input name="title" type="text" placeholder="Title" className="u-full-width" onChange={this.onChangeTitle.bind(this)} value={this.state.title} />
+            <input name="title" type="text" placeholder="Title" className="u-full-width" onChange={this.onChangeTitle.bind(this)} value={this.state.title} autoFocus />
             <textarea name="body" style={textareaStyles} placeholder="Body" className="u-full-width" onChange={this.onChangeBody.bind(this)} value={this.state.body}></textarea>
             <input name="submit" type="submit" className="button button-primary" value="Create post" />
             <Link to="/" className="u-pull-right button">Cancel</Link>
