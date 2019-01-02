@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createPost } from '../../actions/posts';
 import PostForm from '../../components/posts/PostForm';
+import history from "../../history";
 
 class PostNewContainer extends Component {
   handleCreatePost(post) {
@@ -16,7 +17,8 @@ class PostNewContainer extends Component {
         jwt: this.props.currentUser.jwt
       };
 
-      this.props.createPost(post);
+      this.props.createPost(post)
+      .then(history.push('/'));
     } else {
       alert('Please fill out all fields');
     }

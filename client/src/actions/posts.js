@@ -1,5 +1,4 @@
 import 'whatwg-fetch';
-import { push } from 'react-router-redux';
 
 import { QUERY_URL } from './index';
 
@@ -38,7 +37,6 @@ export function createPost(post) {
     type: CREATE_POST,
     payload: json
   }))
-  .then(() => dispatch(push('/')))
   .catch(exception => dispatch({
     type: ERROR,
     payload: exception.message
@@ -192,7 +190,6 @@ export function deletePost(post) {
     type: DELETE_POST,
     payload: json
   }))
-  .then(() => dispatch(push('/')))
   .catch(exception => dispatch({
     type: ERROR,
     payload: exception.message
