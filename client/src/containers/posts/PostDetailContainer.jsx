@@ -9,7 +9,7 @@ import history from "../../history";
 
 class PostDetailContainer extends Component {
   componentWillMount() {
-    this.props.getPost(this.props.match.id);
+    this.props.getPost(this.props.match.params.id);
   }
 
   handleUpdatePost(post) {
