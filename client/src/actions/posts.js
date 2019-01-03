@@ -1,5 +1,4 @@
 import 'whatwg-fetch';
-import _ from 'lodash';
 
 import { QUERY_URL } from './index';
 
@@ -116,7 +115,7 @@ export function getPost(id) {
     body: JSON.stringify(query)
   })
   .then(response => response.json())
-  .then(json => _.isEmpty(json.errors) ? json : Promise.reject(json.errors[0]))
+  .then(json => json.errors ? Promise.reject(json.errors[0]) : json) 
   .then(json => {
     let payload = json;
     dispatch({
