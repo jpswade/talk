@@ -1,4 +1,5 @@
 import 'whatwg-fetch';
+import _ from 'lodash';
 
 import { QUERY_URL } from './index';
 
@@ -115,17 +116,20 @@ export function getPost(id) {
     body: JSON.stringify(query)
   })
   .then(response => response.json())
+  .then(json => _.isEmpty(json.errors) ? json : Promise.reject(json.errors[0]))
   .then(json => {
     let payload = json;
     dispatch({
       type: GET_POST,
       payload: payload
     });
-    payload = {
-      data: {
-        comments: payload.data.post.comments
-      }
-    };
+    if (payload.data.post) {
+      payload = {
+        data: {
+          comments: payload.data.post.comments
+        }
+      };
+    }
     return payload;
   })
   .then(payload => dispatch({
