@@ -44,8 +44,8 @@ export default class CommentForm extends Component {
     return (
       <div>
         <form onSubmit={this.onSubmit.bind(this)}>
-          <textarea style={textareaStyles} placeholder="Body" className="u-full-width" onChange={this.onChangeBody.bind(this)} value={this.state.body}></textarea>
-          <input type="submit" className="button button-primary" value="Create comment" />
+          <textarea name="body" style={textareaStyles} placeholder="Comment" className="u-full-width" onChange={this.onChangeBody.bind(this)} value={this.state.body} autoFocus />
+          <input name="submit" type="submit" className="button button-primary" value="Create comment" />
         </form>
       </div>
     );
