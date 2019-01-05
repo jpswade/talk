@@ -5,7 +5,6 @@ import { updateComment, deleteComment } from '../../actions/comments';
 import PostDetail from '../../components/posts/PostDetail';
 import Comments from '../../components/comments/Comments';
 import CommentNewContainer from '../../containers/comments/CommentNewContainer';
-import history from "../../history";
 
 class PostDetailContainer extends Component {
   componentWillMount() {
@@ -40,8 +39,7 @@ class PostDetailContainer extends Component {
         jwt: this.props.currentUser.jwt
       };
 
-      this.props.deletePost(post)
-      .then(history.push('/'));
+      this.props.deletePost(post);
     }
   }
 

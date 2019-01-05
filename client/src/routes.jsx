@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route } from 'react-router';
 import { Provider } from 'react-redux';
-import { Router } from 'react-router-dom';
+import { ConnectedRouter } from 'connected-react-router'
 
-import store from './store';
+import configureStore from './store';
 import history from "./history";
 
 import App from './components/app';
@@ -13,9 +13,12 @@ import PostNew from './containers/posts/PostNewContainer';
 import SignUp from './components/users/sign-up';
 import SignIn from './components/users/sign-in';
 
+const initialState = {};
+const store = configureStore(initialState, history);
+
 export default (
   <Provider store={store}>
-    <Router history={history}>
+    <ConnectedRouter history={history}>
       <App>
         <Route exact path="/" component={PostsIndex}/>
         <Route path="/index" component={PostsIndex}/>
@@ -24,6 +27,6 @@ export default (
         <Route path="/sign-up" component={SignUp} />
         <Route path="/sign-in" component={SignIn} />
       </App>
-    </Router>
+    </ConnectedRouter>
   </Provider>
 );

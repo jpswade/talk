@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { signIn } from '../../actions/users';
 import { Link } from 'react-router-dom';
-import history from "../../history";
 
 class SignIn extends Component {
   handleSignIn(event) {
@@ -19,10 +18,7 @@ class SignIn extends Component {
         password
       };
 
-      this.props.signIn(user)
-      .then(
-        history.push(window.previousLocation && window.previousLocation.pathname !== '/sign-up' ? window.previousLocation : '/')
-      );
+      this.props.signIn(user);
     }
   }
 
