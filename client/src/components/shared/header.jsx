@@ -34,7 +34,7 @@ const liStyles = {
 };
 
 const gravatarStyles = {
-  height: "18px",
+  height: "2em",
   display: "inline-block"
 };
 
@@ -68,7 +68,7 @@ class Header extends Component {
                       </Link>
                     </li>
                     <li style={liStyles}>
-                      {currentUser.email}&nbsp;
+                      {currentUser.username}&nbsp;
                       <img
                         style={gravatarStyles}
                         src={currentUser.gravatar}
