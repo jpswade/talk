@@ -72,6 +72,7 @@ export function signIn(user) {
     .then(json => _.isEmpty(json.errors) ? json : Promise.reject(json.errors[0]))
     .then(payload => {
       dispatch({ payload, type: SIGN_IN });
+      localStorage.setItem('currentUser', JSON.stringify(payload));
       dispatch(push(window.previousLocation && window.previousLocation.pathname !== '/sign-up' ? window.previousLocation : '/'));
     })
     .catch(exception => dispatch({
@@ -83,6 +84,7 @@ export function signIn(user) {
 
 export function signOut() {
   return dispatch => {
+    localStorage.clear();
     dispatch({ type: SIGN_OUT });
   }
 }

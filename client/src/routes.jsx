@@ -13,8 +13,16 @@ import PostNew from './containers/posts/PostNewContainer';
 import SignUp from './components/users/sign-up';
 import SignIn from './components/users/sign-in';
 
+import { SIGN_IN } from './actions/constants';
+
 const initialState = {};
 const store = configureStore(initialState, history);
+
+const payload = JSON.parse(localStorage.getItem('currentUser'));
+
+if(payload) {
+  store.dispatch({ payload, type: SIGN_IN });
+}
 
 export default (
   <Provider store={store}>
