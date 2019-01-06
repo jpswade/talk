@@ -12,6 +12,14 @@ A "Serverless" function backend.
 
 `sls offline start`
 
+Listing tables:
+
+`aws dynamodb --endpoint-url http://localhost:8000 list-tables`
+
+Scan the table:
+
+`aws dynamodb --endpoint-url http://localhost:8000 scan --table-name webdevtalk-dev-users`
+
 ## Frontend
 
 A "React" frontend client.
