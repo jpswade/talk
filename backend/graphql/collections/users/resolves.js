@@ -23,10 +23,12 @@ module.exports = {
 
     let putItem = db('put', {
       TableName: usersTable,
-      Item: user
+      Item: user,
+      ConditionExpression: 'attribute_not_exists(username) OR attribute_not_exists(email)',
     });
 
-    return putItem.then(() => user);
+    return putItem
+    .then(() => user);
   },
 
   signIn(user) {
@@ -75,6 +77,22 @@ module.exports = {
 
       Item.gravatar = gravatar.url(Item.email, {s: '100', r: 'x', d: 'retro'}, true);
 
+      return Item;
+    });
+  },
+
+  getUserByEmail(email) {
+    return db('query', {
+      TableName: usersTable,
+      IndexName: 'emailIndex',
+      KeyConditionExpression: 'email = :email',
+      ProjectionExpression: 'id, username, email, createdAt, updatedAt',
+      ExpressionAttributeValues: {
+        ':email': email
+      }
+    }).then(result => {
+      const Item = result.Items[0];
+      if (!Item) return Promise.reject('User not found');
       return Item;
     });
   },
