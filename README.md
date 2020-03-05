@@ -27,3 +27,7 @@ A "React" frontend client.
 ### Start locally (Development)
 
 `npm run start`
+
+## Todo
+
+- Switch to a Single sign-on model
